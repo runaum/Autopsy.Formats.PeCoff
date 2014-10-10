@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace Autopsy.Formats.PeCoff
 {
+    /// <summary>
+    /// IMAGE_DOS_HEADER
+    /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct ImageDosHeader
+    public struct DosHeader
     {
         /// <summary>
         /// Magic number
@@ -108,7 +111,7 @@ namespace Autopsy.Formats.PeCoff
         /// </summary>
         public Int32 e_lfanew;
 
-        private string Magic
+        public string Magic
         {
             get { return new string(e_magic); }
         }
