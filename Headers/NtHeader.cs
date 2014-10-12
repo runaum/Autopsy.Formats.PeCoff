@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Autopsy.Formats.PeCoff.Common;
 
-namespace Autopsy.Formats.PeCoff
+namespace Autopsy.Formats.PeCoff.Headers
 {
     public class NtHeader: IBinaryData
     {

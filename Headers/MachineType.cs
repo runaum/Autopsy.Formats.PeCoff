@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Autopsy.Formats.PeCoff
+﻿namespace Autopsy.Formats.PeCoff.Headers
 {
     /// <summary>
     /// IMAGE_FILE_MACHINE: The Machine field has one of the following values that specifies its CPU type. 

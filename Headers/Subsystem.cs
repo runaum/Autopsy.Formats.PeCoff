@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Autopsy.Formats.PeCoff
+﻿namespace Autopsy.Formats.PeCoff.Headers
 {
     public enum Subsystem: ushort
     {
@@ -41,7 +35,7 @@ namespace Autopsy.Formats.PeCoff
         /// <summary>
         /// IMAGE_SUBSYSTEM_WINDOWS_CE_GUI: Windows CE
         /// </summary>        
-        WindowsCEGui = 9,
+        WindowsCeGui = 9,
 
         /// <summary>
         /// IMAGE_SUBSYSTEM_EFI_APPLICATION: An Extensible Firmware Interface (EFI) application

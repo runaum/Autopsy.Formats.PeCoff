@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Autopsy.Formats.PeCoff
+namespace Autopsy.Formats.PeCoff.Sections
 {
     // TODO: Grouped sections (coff only)
     // TODO: More classes & pretty API
@@ -24,7 +20,7 @@ namespace Autopsy.Formats.PeCoff
         /// </summary>
         //[FieldOffset(0)]
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
-        private char[] _name;
+        public char[] InternalName;
 
         /// <summary>
         /// The total size of the section when loaded into memory, in bytes. 
@@ -93,7 +89,7 @@ namespace Autopsy.Formats.PeCoff
 
         public string Name
         {
-            get { return new string(_name); }
+            get { return new string(InternalName); }
         }
     }
 }

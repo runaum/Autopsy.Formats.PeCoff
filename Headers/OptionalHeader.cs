@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Autopsy.Formats.PeCoff.Common;
+using Autopsy.Formats.PeCoff.Directories;
 
-namespace Autopsy.Formats.PeCoff
+namespace Autopsy.Formats.PeCoff.Headers
 {
     public class OptionalHeader
     {
@@ -207,7 +206,7 @@ namespace Autopsy.Formats.PeCoff
             AddressOfEntryPoint = binary.Reader.ReadUInt32();
             BaseOfCode = binary.Reader.ReadUInt32();
 
-            if (Magic == ImageState.PE32)
+            if (Magic == ImageState.Pe32)
                 BaseOfData = binary.Reader.ReadUInt32();
 
             ImageBase = binary.Reader.ReadUInt32();
@@ -233,7 +232,7 @@ namespace Autopsy.Formats.PeCoff
             NumberOfRvaAndSizes = binary.Reader.ReadUInt32();
 
             DataDirectories = new List<DataDirectory>((int)NumberOfRvaAndSizes);
-            for (int i = 0; i < NumberOfRvaAndSizes; i++)
+            for (var i = 0; i < NumberOfRvaAndSizes; i++)
                 DataDirectories.Add(binary.MarshalAt<DataDirectory>());
         }
 

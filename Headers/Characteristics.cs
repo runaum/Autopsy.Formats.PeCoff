@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Autopsy.Formats.PeCoff
+namespace Autopsy.Formats.PeCoff.Headers
 {
     [Flags]
     public enum Characteristics: ushort

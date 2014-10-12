@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Autopsy.Formats.PeCoff
+namespace Autopsy.Formats.PeCoff.Sections
 {
     [Flags]
     public enum DataSectionFlags : uint
@@ -104,7 +100,7 @@ namespace Autopsy.Formats.PeCoff
         /// The section contains data referenced through the global pointer (GP).
         /// </summary>
         [Description("Relative global pointer")]
-        RelativeGP = 0x00008000,
+        RelativeGp = 0x00008000,
 
         /// <summary>
         /// Reserved for future use.

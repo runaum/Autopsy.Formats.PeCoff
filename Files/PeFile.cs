@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Autopsy.Formats.PeCoff.Common;
+using Autopsy.Formats.PeCoff.Headers;
+using Autopsy.Formats.PeCoff.Sections;
 
-namespace Autopsy.Formats.PeCoff
+namespace Autopsy.Formats.PeCoff.Files
 {
     public class PeFile: BinaryHelper
     {

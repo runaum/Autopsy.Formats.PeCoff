@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
-namespace Autopsy.Formats.PeCoff
+namespace Autopsy.Formats.PeCoff.Headers
 {
     /// <summary>
     /// The state of the image file.
@@ -16,18 +11,18 @@ namespace Autopsy.Formats.PeCoff
         /// IMAGE_NT_OPTIONAL_HDR32_MAGIC: The file is an executable image.
         /// </summary>
         [Description("PE32")]
-        PE32 = 0x10b,
+        Pe32 = 0x10b,
 
         /// <summary>
         /// IMAGE_NT_OPTIONAL_HDR64_MAGIC: The file is an executable image.
         /// </summary>
         [Description("PE32+")]
-        PE32Plus = 0x20b,
+        Pe32Plus = 0x20b,
 
         /// <summary>
         /// IMAGE_ROM_OPTIONAL_HDR_MAGIC: The file is a ROM image.
         /// </summary>
         [Description("ROM")]
-        ROM = 0x107
+        Rom = 0x107
     }
 }

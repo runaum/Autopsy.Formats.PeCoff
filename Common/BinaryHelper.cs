@@ -1,27 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Autopsy.Formats.PeCoff
+namespace Autopsy.Formats.PeCoff.Common
 {
     public class BinaryHelper: IBinaryHelper
     {
-        private Stream _stream;
-        public Stream Stream { get { return _stream; } }
-
-        private BinaryReader _reader;
-        public BinaryReader Reader { get { return _reader; } }
+        public Stream Stream { get; private set; }
+        public BinaryReader Reader { get; private set; }
 
         protected virtual void ReadInternal(Stream stream) {}
 
         protected void Read(Stream stream)
         {
-            _stream = stream;
-            _reader = new BinaryReader(Stream);
+            Stream = stream;
+            Reader = new BinaryReader(Stream);
 
             ReadInternal(Stream);
         }
@@ -71,8 +64,8 @@ namespace Autopsy.Formats.PeCoff
             try
             {
                 var bytes = Reader.ReadBytes(size);
-                GCHandle handle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
-                T result = (T)Marshal.PtrToStructure(handle.AddrOfPinnedObject(), typeof(T));
+                var handle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
+                var result = (T)Marshal.PtrToStructure(handle.AddrOfPinnedObject(), typeof(T));
                 handle.Free();
                 return result;
             }

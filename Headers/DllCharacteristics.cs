@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Autopsy.Formats.PeCoff
+namespace Autopsy.Formats.PeCoff.Headers
 {
     [Flags]
     public enum DllCharacteristics: ushort
@@ -52,7 +48,7 @@ namespace Autopsy.Formats.PeCoff
         /// <summary>
         /// IMAGE_DLLCHARACTERISTICS_NO_SEH: Does not use structured exception (SE) handling. No SE handler may be called in this image.
         /// </summary>        
-        NoSEH = 0x0400,
+        NoSeh = 0x0400,
 
         /// <summary>
         /// IMAGE_DLLCHARACTERISTICS_NO_BIND: Do not bind the image.
