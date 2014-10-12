@@ -39,13 +39,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinaryHelper.cs" />
     <Compile Include="Characteristics.cs" />
     <Compile Include="DataSectionFlags.cs" />
     <Compile Include="DirectoryEntry.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="FileHeader.cs" />
     <Compile Include="DataDirectory.cs" />
     <Compile Include="DllCharacteristics.cs" />
     <Compile Include="DosHeader.cs" />
+    <Compile Include="IBinaryData.cs" />
+    <Compile Include="IBinaryHelper.cs" />
     <Compile Include="MachineType.cs" />
     <Compile Include="NtHeader.cs" />
     <Compile Include="OptionalHeader.cs" />

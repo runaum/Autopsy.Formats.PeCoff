@@ -187,84 +187,126 @@ namespace Autopsy.Formats.PeCoff
 
         public DataDirectory[] DataDirectories;
 
-        /// <summary>
-        /// Export table address and size
-        /// </summary>
-        public DataDirectory ExportTable;
+        public OptionalHeader() { }
 
-        /// <summary>
-        /// Import table address and size
-        /// </summary>
-        public DataDirectory ImportTable;
+        public OptionalHeader(IBinaryHelper binary)
+        {
+            // TODO: Data contract, attributes, good mapping
 
-        /// <summary>
-        /// Resource table address and size
-        /// </summary>
-        public DataDirectory ResourceTable;
+            Magic = (ImageState)binary.Reader.ReadUInt16();
 
-        /// <summary>
-        /// Exception table address and size
-        /// </summary>
-        public DataDirectory ExceptionTable;
+            MajorLinkerVersion = binary.Reader.ReadByte();
+            MinorLinkerVersion = binary.Reader.ReadByte();
+            SizeOfCode = binary.Reader.ReadUInt32();
+            SizeOfInitializedData = binary.Reader.ReadUInt32();
+            SizeOfUninitializedData = binary.Reader.ReadUInt32();
+            AddressOfEntryPoint = binary.Reader.ReadUInt32();
+            BaseOfCode = binary.Reader.ReadUInt32();
 
-        /// <summary>
-        /// Certificate table address and size
-        /// </summary>
-        public DataDirectory CertificateTable;
+            if (Magic == ImageState.PE32)
+                BaseOfData = binary.Reader.ReadUInt32();
 
-        /// <summary>
-        /// Base relocation table address and size
-        /// </summary>
-        public DataDirectory BaseRelocationTable;
+            ImageBase = binary.Reader.ReadUInt32();
+            SectionAlignment = binary.Reader.ReadUInt32();
+            FileAlignment = binary.Reader.ReadUInt32();
+            MajorOperatingSystemVersion = binary.Reader.ReadUInt16();
+            MinorOperatingSystemVersion = binary.Reader.ReadUInt16();
+            MajorImageVersion = binary.Reader.ReadUInt16();
+            MinorImageVersion = binary.Reader.ReadUInt16();
+            MajorSubsystemVersion = binary.Reader.ReadUInt16();
+            MinorSubsystemVersion = binary.Reader.ReadUInt16();
+            Win32VersionValue = binary.Reader.ReadUInt32();
+            SizeOfImage = binary.Reader.ReadUInt32();
+            SizeOfHeaders = binary.Reader.ReadUInt32();
+            CheckSum = binary.Reader.ReadUInt32();
+            Subsystem = (Subsystem)binary.Reader.ReadUInt16();
+            DllCharacteristics = (DllCharacteristics)binary.Reader.ReadUInt16();
+            SizeOfStackReserve = binary.Reader.ReadUInt32();
+            SizeOfStackCommit = binary.Reader.ReadUInt32();
+            SizeOfHeapReserve = binary.Reader.ReadUInt32();
+            SizeOfHeapCommit = binary.Reader.ReadUInt32();
+            LoaderFlags = binary.Reader.ReadUInt32();
+            NumberOfRvaAndSizes = binary.Reader.ReadUInt32();
+        }
 
-        /// <summary>
-        /// Debugging information starting address and size
-        /// </summary>
-        public DataDirectory Debug;
+        ///// <summary>
+        ///// Export table address and size
+        ///// </summary>
+        //public DataDirectory ExportTable;
 
-        /// <summary>
-        /// Architecture-specific data address and size
-        /// </summary>
-        public DataDirectory Architecture;
+        ///// <summary>
+        ///// Import table address and size
+        ///// </summary>
+        //public DataDirectory ImportTable;
 
-        /// <summary>
-        /// Global pointer register relative virtual address
-        /// </summary>
-        public DataDirectory GlobalPtr;
+        ///// <summary>
+        ///// Resource table address and size
+        ///// </summary>
+        //public DataDirectory ResourceTable;
 
-        /// <summary>
-        /// Thread local storage (TLS) table address and size
-        /// </summary>
-        public DataDirectory TLSTable;
+        ///// <summary>
+        ///// Exception table address and size
+        ///// </summary>
+        //public DataDirectory ExceptionTable;
 
-        /// <summary>
-        /// Load configuration table address and size
-        /// </summary>
-        public DataDirectory LoadConfigTable;
+        ///// <summary>
+        ///// Certificate table address and size
+        ///// </summary>
+        //public DataDirectory CertificateTable;
 
-        /// <summary>
-        /// Bound import table address and size
-        /// </summary>
-        public DataDirectory BoundImport;
+        ///// <summary>
+        ///// Base relocation table address and size
+        ///// </summary>
+        //public DataDirectory BaseRelocationTable;
 
-        /// <summary>
-        /// Import address table address and size
-        /// </summary>
-        public DataDirectory IAT;
+        ///// <summary>
+        ///// Debugging information starting address and size
+        ///// </summary>
+        //public DataDirectory Debug;
 
-        /// <summary>
-        /// Delay import descriptor address and size
-        /// </summary>
-        public DataDirectory DelayImportDescriptor;
+        ///// <summary>
+        ///// Architecture-specific data address and size
+        ///// </summary>
+        //public DataDirectory Architecture;
 
-        /// <summary>
-        /// The CLR header address and size
-        /// </summary>
-        public DataDirectory CLRRuntimeHeader;
+        ///// <summary>
+        ///// Global pointer register relative virtual address
+        ///// </summary>
+        //public DataDirectory GlobalPtr;
 
-        /// <summary>
-        /// Reserved
-        /// </summary>
-        public DataDirectory Reserved;
+        ///// <summary>
+        ///// Thread local storage (TLS) table address and size
+        ///// </summary>
+        //public DataDirectory TLSTable;
+
+        ///// <summary>
+        ///// Load configuration table address and size
+        ///// </summary>
+        //public DataDirectory LoadConfigTable;
+
+        ///// <summary>
+        ///// Bound import table address and size
+        ///// </summary>
+        //public DataDirectory BoundImport;
+
+        ///// <summary>
+        ///// Import address table address and size
+        ///// </summary>
+        //public DataDirectory IAT;
+
+        ///// <summary>
+        ///// Delay import descriptor address and size
+        ///// </summary>
+        //public DataDirectory DelayImportDescriptor;
+
+        ///// <summary>
+        ///// The CLR header address and size
+        ///// </summary>
+        //public DataDirectory CLRRuntimeHeader;
+
+        ///// <summary>
+        ///// Reserved
+        ///// </summary>
+        //public DataDirectory Reserved;
     }
 }

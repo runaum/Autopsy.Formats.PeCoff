@@ -11,7 +11,7 @@ namespace Autopsy.Formats.PeCoff
     /// IMAGE_DOS_HEADER
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct DosHeader
+    public class DosHeader
     {
         /// <summary>
         /// Magic number

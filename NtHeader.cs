@@ -6,17 +6,46 @@ using System.Threading.Tasks;
 
 namespace Autopsy.Formats.PeCoff
 {
-    public class NtHeader
+    public class NtHeader: IBinaryData
     {
-        public char[] Signature;
+        public uint Signature;
 
         public FileHeader FileHeader;
 
         public OptionalHeader OptionalHeader;
 
-        public NtHeader()
+        public NtHeader() { }
+
+        public NtHeader(IBinaryHelper binary)
         {
-            // TODO
+            Read(binary);
+        }
+
+        public void Read(IBinaryHelper binary)
+        {
+            Signature = binary.Reader.ReadUInt32();
+            FileHeader = binary.MarshalAt<FileHeader>();
+            OptionalHeader = new OptionalHeader(binary);
+        }
+
+        public bool IsValid
+        {
+            get { return (Signature == 0x00004550); }
+        }
+
+        #region Default static constructors
+
+        public static NtHeader Empty
+        {
+            get
+            {
+                return new NtHeader
+                {
+                    Signature = 0, 
+                    FileHeader = null,
+                    OptionalHeader = null
+                };
+            }
         }
 
         public static NtHeader Default
@@ -25,11 +54,13 @@ namespace Autopsy.Formats.PeCoff
             {
                 return new NtHeader
                 {
-                    Signature = new [] { 'P', 'E', (char)0, (char)0 },
+                    Signature = 0x00004550, // 'PE\0\0',
                     FileHeader = null,
                     OptionalHeader = null
                 };
             }
         }
+
+        #endregion
     }
 }

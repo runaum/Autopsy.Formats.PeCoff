@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Autopsy.Formats.PeCoff
 {
-    public class PeFile
+    public class PeFile: BinaryHelper
     {
         public DosHeader DosHeader;
 
@@ -45,9 +45,21 @@ namespace Autopsy.Formats.PeCoff
             }
         }
 
-        private void Read(Stream stream)
+        protected override void ReadInternal(Stream stream)
         {
-            // TODO
+            // Read IMAGE_DOS_HEADER
+            DosHeader = MarshalAt<DosHeader>(0);
+            if (!DosHeader.IsValid)
+                throw new Exception("Invalid DOS header");
+
+            // Read DOS stub program
+            var stubSize = DosHeader.e_lfanew - Stream.Position;
+            DosStubProgram = Reader.ReadBytes((int)stubSize);
+
+            // Read IMAGE_NT_HEADER (both archs)
+            NtHeader = new NtHeader(this);
+            if (!NtHeader.IsValid)
+                throw new Exception("Invalid PE header");
         }
 
         public PeFile(string fileName)
