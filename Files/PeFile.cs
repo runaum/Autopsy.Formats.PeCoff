@@ -47,6 +47,36 @@ namespace Autopsy.Formats.PeCoff
             }
         }
 
+        // TODO: Validate algo, some cases doesn't checked
+        // TODO: REFACTOR ME!
+        public long VAToOffset(long virtualAddress)
+        {
+            if (SectionHeaders == null)
+                throw new Exception("No sections to calc an offset");
+
+            var section = LocateVA(virtualAddress);
+            if (section == null)
+                return -1;
+
+            return section.PointerToRawData + (virtualAddress - section.VirtualAddress);
+        }
+
+        // TODO: Validate algo, some cases doesn't checked
+        // TODO: REFACTOR ME!
+        public SectionHeader LocateVA(long virtualAddress)
+        {
+            if (SectionHeaders == null)
+                throw new Exception("No sections to calc an offset");
+
+            foreach (var section in SectionHeaders)
+            {
+                if (virtualAddress >= section.VirtualAddress &&
+                    virtualAddress < (section.VirtualAddress + section.SizeOfRawData))
+                    return section;
+            }
+            return null;
+        }
+
         protected override void ReadInternal(Stream stream)
         {
             // Read IMAGE_DOS_HEADER

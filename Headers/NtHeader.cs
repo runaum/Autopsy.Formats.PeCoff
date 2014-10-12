@@ -28,9 +28,11 @@ namespace Autopsy.Formats.PeCoff
             OptionalHeader = new OptionalHeader(binary);
         }
 
+        public const uint PeSignature = 0x00004550;
+
         public bool IsValid
         {
-            get { return (Signature == 0x00004550); }
+            get { return (Signature == PeSignature); }
         }
 
         #region Default static constructors

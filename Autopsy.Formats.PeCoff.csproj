@@ -39,26 +39,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BinaryHelper.cs" />
-    <Compile Include="Characteristics.cs" />
-    <Compile Include="DataSectionFlags.cs" />
-    <Compile Include="DirectoryEntry.cs" />
-    <Compile Include="Extensions.cs" />
-    <Compile Include="FileHeader.cs" />
-    <Compile Include="DataDirectory.cs" />
-    <Compile Include="DllCharacteristics.cs" />
-    <Compile Include="DosHeader.cs" />
-    <Compile Include="IBinaryData.cs" />
-    <Compile Include="IBinaryHelper.cs" />
-    <Compile Include="MachineType.cs" />
-    <Compile Include="NtHeader.cs" />
-    <Compile Include="OptionalHeader.cs" />
-    <Compile Include="PeFile.cs" />
-    <Compile Include="ImageState.cs" />
+    <Compile Include="Common\BinaryHelper.cs" />
+    <Compile Include="Headers\Characteristics.cs" />
+    <Compile Include="Sections\DataSectionFlags.cs" />
+    <Compile Include="Directories\Export\ExportDirectory.cs" />
+    <Compile Include="Directories\IDirectory.cs" />
+    <Compile Include="Directories\Import\ImportDescriptor.cs" />
+    <Compile Include="Directories\Import\ImportDirectory.cs" />
+    <Compile Include="Directories\DirectoryEntry.cs" />
+    <Compile Include="Common\Extensions.cs" />
+    <Compile Include="Headers\FileHeader.cs" />
+    <Compile Include="Directories\DataDirectory.cs" />
+    <Compile Include="Headers\DllCharacteristics.cs" />
+    <Compile Include="Headers\DosHeader.cs" />
+    <Compile Include="Common\IBinaryData.cs" />
+    <Compile Include="Common\IBinaryHelper.cs" />
+    <Compile Include="Files\LibFile.cs" />
+    <Compile Include="Headers\MachineType.cs" />
+    <Compile Include="Headers\NtHeader.cs" />
+    <Compile Include="Files\ObjFile.cs" />
+    <Compile Include="Headers\OptionalHeader.cs" />
+    <Compile Include="Files\PeFile.cs" />
+    <Compile Include="Headers\ImageState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SectionHeader.cs" />
-    <Compile Include="Subsystem.cs" />
+    <Compile Include="Sections\Section.cs" />
+    <Compile Include="Sections\SectionHeader.cs" />
+    <Compile Include="Headers\Subsystem.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

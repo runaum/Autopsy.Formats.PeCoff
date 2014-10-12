@@ -191,8 +191,12 @@ namespace Autopsy.Formats.PeCoff
 
         public OptionalHeader(IBinaryHelper binary)
         {
-            // TODO: Data contract, attributes, good mapping
+            Read(binary);
+        }
 
+        // TODO: Data contract, attributes, good mapping
+        public void Read(IBinaryHelper binary)
+        {
             Magic = (ImageState)binary.Reader.ReadUInt16();
 
             MajorLinkerVersion = binary.Reader.ReadByte();
