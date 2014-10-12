@@ -185,7 +185,7 @@ namespace Autopsy.Formats.PeCoff
 
 #endregion
 
-        public DataDirectory[] DataDirectories;
+        public List<DataDirectory> DataDirectories;
 
         public OptionalHeader() { }
 
@@ -228,9 +228,9 @@ namespace Autopsy.Formats.PeCoff
             LoaderFlags = binary.Reader.ReadUInt32();
             NumberOfRvaAndSizes = binary.Reader.ReadUInt32();
 
-            DataDirectories = new DataDirectory[NumberOfRvaAndSizes];
+            DataDirectories = new List<DataDirectory>((int)NumberOfRvaAndSizes);
             for (int i = 0; i < NumberOfRvaAndSizes; i++)
-                DataDirectories[i] = binary.MarshalAt<DataDirectory>();
+                DataDirectories.Add(binary.MarshalAt<DataDirectory>());
         }
 
         ///// <summary>

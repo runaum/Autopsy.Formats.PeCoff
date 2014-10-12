@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace Autopsy.Formats.PeCoff
 {
-    // TODO: Explicit?
+    // TODO: Grouped sections (coff only)
+    // TODO: More classes & pretty API
+
     /// <summary>
     /// IMAGE_SECTION_HEADER
     /// </summary>
@@ -22,7 +24,7 @@ namespace Autopsy.Formats.PeCoff
         /// </summary>
         //[FieldOffset(0)]
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
-        public char[] Name;
+        private char[] _name;
 
         /// <summary>
         /// The total size of the section when loaded into memory, in bytes. 
@@ -89,9 +91,9 @@ namespace Autopsy.Formats.PeCoff
         //[FieldOffset(36)]
         public DataSectionFlags Characteristics;
 
-        public string Section
+        public string Name
         {
-            get { return new string(Name); }
+            get { return new string(_name); }
         }
     }
 }
