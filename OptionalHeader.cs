@@ -227,6 +227,10 @@ namespace Autopsy.Formats.PeCoff
             SizeOfHeapCommit = binary.Reader.ReadUInt32();
             LoaderFlags = binary.Reader.ReadUInt32();
             NumberOfRvaAndSizes = binary.Reader.ReadUInt32();
+
+            DataDirectories = new DataDirectory[DirectoryEntry.Count];
+            for (int i = 0; i < DirectoryEntry.Count; i++)
+                DataDirectories[i] = binary.MarshalAt<DataDirectory>();
         }
 
         ///// <summary>

@@ -48,5 +48,10 @@ namespace Autopsy.Formats.PeCoff
         /// This value should be 0 for object files.
         /// </summary>
         public UInt16 SizeOfOptionalHeader;
+
+        /// <summary>
+        /// The characteristics of the image.
+        /// </summary>
+        public Characteristics Characteristics;
     }
 }

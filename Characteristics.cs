@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Autopsy.Formats.PeCoff
 {
     [Flags]
-    public enum Characteristics
+    public enum Characteristics: ushort
     {
         /// <summary>
         /// IMAGE_FILE_RELOCS_STRIPPED: Image only, Windows CE, and Windows NT® and later. 

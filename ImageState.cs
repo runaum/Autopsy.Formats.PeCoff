@@ -10,7 +10,7 @@ namespace Autopsy.Formats.PeCoff
     /// <summary>
     /// The state of the image file.
     /// </summary>
-    public enum ImageState//: ushort
+    public enum ImageState: ushort
     {
         /// <summary>
         /// IMAGE_NT_OPTIONAL_HDR32_MAGIC: The file is an executable image.

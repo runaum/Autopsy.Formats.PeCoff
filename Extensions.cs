@@ -9,14 +9,16 @@ namespace Autopsy.Formats.PeCoff
 {
     public static class ReflectionHelpers
     {
-        public static string GetCustomDescription(Enum objEnum)
+        public static string GetCustomDescription(Enum value)
         {
-            var fi = objEnum.GetType().GetField(objEnum.ToString());
-            var attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
-            return (attributes.Length > 0) ? attributes[0].Description : objEnum.ToString();
+            DescriptionAttribute attribute = value.GetType()
+                        .GetField(value.ToString())
+                        .GetCustomAttributes(typeof(DescriptionAttribute), false)
+                        .SingleOrDefault() as DescriptionAttribute;
+            return attribute == null ? value.ToString() : attribute.Description;
         }
 
-        public static string Description(this Enum value)
+        public static string ToDesc(this Enum value)
         {
             return GetCustomDescription(value);
         }

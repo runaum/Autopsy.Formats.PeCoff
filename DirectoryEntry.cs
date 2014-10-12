@@ -8,6 +8,8 @@ namespace Autopsy.Formats.PeCoff
 {
     public static class DirectoryEntry
     {
+        public const uint Count = 15;
+
         /// <summary>
         /// IMAGE_DIRECTORY_ENTRY_EXPORT
         /// </summary>
