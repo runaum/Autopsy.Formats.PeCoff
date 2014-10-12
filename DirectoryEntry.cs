@@ -8,8 +8,6 @@ namespace Autopsy.Formats.PeCoff
 {
     public static class DirectoryEntry
     {
-        public const uint Count = 15;
-
         /// <summary>
         /// IMAGE_DIRECTORY_ENTRY_EXPORT
         /// </summary>
@@ -84,5 +82,10 @@ namespace Autopsy.Formats.PeCoff
         /// IMAGE_DIRECTORY_ENTRY_COM_DESCRIPTOR
         /// </summary>
         public const uint ComDescriptor = 14;
+
+        /// <summary>
+        /// Reserved
+        /// </summary>
+        public const uint Reserved = 15;
     }
 }

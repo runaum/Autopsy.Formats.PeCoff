@@ -15,6 +15,8 @@ namespace Autopsy.Formats.PeCoff
 
         public NtHeader NtHeader;
 
+        public List<SectionHeader> SectionHeaders;
+
         public FileHeader FileHeader
         { 
             get 
@@ -60,6 +62,12 @@ namespace Autopsy.Formats.PeCoff
             NtHeader = new NtHeader(this);
             if (!NtHeader.IsValid)
                 throw new Exception("Invalid PE header");
+
+            // Read sections
+            var sectionCount = NtHeader.FileHeader.NumberOfSections;
+            SectionHeaders = new List<SectionHeader>(sectionCount + 1);
+            for (int i = 0; i < sectionCount; i++)
+                SectionHeaders.Add(MarshalAt<SectionHeader>());
         }
 
         public PeFile(string fileName)

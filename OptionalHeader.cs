@@ -228,8 +228,8 @@ namespace Autopsy.Formats.PeCoff
             LoaderFlags = binary.Reader.ReadUInt32();
             NumberOfRvaAndSizes = binary.Reader.ReadUInt32();
 
-            DataDirectories = new DataDirectory[DirectoryEntry.Count];
-            for (int i = 0; i < DirectoryEntry.Count; i++)
+            DataDirectories = new DataDirectory[NumberOfRvaAndSizes];
+            for (int i = 0; i < NumberOfRvaAndSizes; i++)
                 DataDirectories[i] = binary.MarshalAt<DataDirectory>();
         }
 

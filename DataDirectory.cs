@@ -14,6 +14,7 @@ namespace Autopsy.Formats.PeCoff
     public class DataDirectory
     {
         public UInt32 VirtualAddress;
+
         public UInt32 Size;
     }
 }
