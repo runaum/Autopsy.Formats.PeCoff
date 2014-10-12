@@ -10,7 +10,7 @@ namespace Autopsy.Formats.PeCoff
     /// <summary>
     /// IMAGE_DOS_HEADER
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct DosHeader
     {
         /// <summary>
@@ -118,7 +118,7 @@ namespace Autopsy.Formats.PeCoff
 
         public bool IsValid
         {
-            get { return Magic == "MZ"; }
+            get { return Magic == "MZ" || Magic == "ZM"; }
         }
     }
 }

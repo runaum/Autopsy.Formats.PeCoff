@@ -10,7 +10,7 @@ namespace Autopsy.Formats.PeCoff
     /// <summary>
     /// IMAGE_DATA_DIRECTORY
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct DataDirectory
     {
         public UInt32 VirtualAddress;
