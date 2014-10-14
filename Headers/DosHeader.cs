@@ -10,106 +10,106 @@ namespace Autopsy.Formats.PeCoff.Headers
     public class DosHeader
     {
         /// <summary>
-        /// Magic number
+        /// e_magic: Magic number
         /// </summary>
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public char[] e_magic;      
+        public char[] InternalMagic;      
 
         /// <summary>
-        /// Bytes on last page of file
+        /// e_cblp: Bytes on last page of file
         /// </summary>
-        public UInt16 e_cblp;   
+        public UInt16 UsedBytesInTheLastPage;   
 
         /// <summary>
-        /// Pages in file
+        /// e_cp: Pages in file
         /// </summary>
-        public UInt16 e_cp;      
+        public UInt16 FileSizeInPages;      
 
         /// <summary>
-        /// Relocations
+        /// e_crlc: Relocations
         /// </summary>
-        public UInt16 e_crlc;    
+        public UInt16 NumberOfRelocationItems;    
 
         /// <summary>
-        /// Size of header in paragraphs
+        /// e_cparhdr: Size of header in paragraphs
         /// </summary>
-        public UInt16 e_cparhdr;    
+        public UInt16 HeaderSizeInParagraphs;    
 
         /// <summary>
-        /// Minimum extra paragraphs needed
+        /// e_minalloc: Minimum extra paragraphs needed
         /// </summary>
-        public UInt16 e_minalloc;   
+        public UInt16 MinimumExtraParagraphs;   
 
         /// <summary>
-        /// Maximum extra paragraphs needed
+        /// e_maxalloc: Maximum extra paragraphs needed
         /// </summary>
-        public UInt16 e_maxalloc;   
+        public UInt16 MaximumExtraParagraphs;   
 
         /// <summary>
-        /// Initial (relative) SS value
+        /// e_ss: Initial (relative) SS value
         /// </summary>
-        public UInt16 e_ss;      
+        public UInt16 InitialRelativeSS;      
 
         /// <summary>
-        /// Initial SP value
+        /// e_sp: Initial SP value
         /// </summary>
-        public UInt16 e_sp;      
+        public UInt16 InitialSP;      
 
         /// <summary>
-        /// Checksum
+        /// e_csum: Checksum
         /// </summary>
-        public UInt16 e_csum;    
+        public UInt16 Checksum;    
 
         /// <summary>
-        /// Initial IP value
+        /// e_ip: Initial IP value
         /// </summary>
-        public UInt16 e_ip;      
+        public UInt16 InitialIP;      
 
         /// <summary>
-        /// Initial (relative) CS value
+        /// e_cs: Initial (relative) CS value
         /// </summary>
-        public UInt16 e_cs;      
+        public UInt16 InitialRelativeCS;      
 
         /// <summary>
-        /// File address of relocation table
+        /// e_lfarlc: File address of relocation table
         /// </summary>
-        public UInt16 e_lfarlc;      
+        public UInt16 AddressOfRelocationTable;      
 
         /// <summary>
-        /// Overlay number
+        /// e_ovno: Overlay number
         /// </summary>
-        public UInt16 e_ovno;    
+        public UInt16 OverlayNumber;    
 
         /// <summary>
-        /// Reserved words
+        /// e_res1: Reserved words
         /// </summary>
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
-        public UInt16[] e_res1;    
+        public UInt16[] Reserved;    
 
         /// <summary>
-        /// OEM identifier (for e_oeminfo)
+        /// e_oemid: OEM identifier (for e_oeminfo)
         /// </summary>
-        public UInt16 e_oemid;      
+        public UInt16 OemId;      
 
         /// <summary>
-        /// OEM information; e_oemid specific
+        /// e_oeminfo: OEM information; e_oemid specific
         /// </summary>
-        public UInt16 e_oeminfo;    
+        public UInt16 OemInfo;    
 
         /// <summary>
-        /// Reserved words
+        /// e_res2: Reserved words
         /// </summary>
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
-        public UInt16[] e_res2;
+        public UInt16[] Reserved2;
 
         /// <summary>
-        /// File address of new exe header
+        /// e_lfanew: File address of new exe header
         /// </summary>
-        public Int32 e_lfanew;
+        public Int32 AddressOfNewExeHeader;
 
         public string Magic
         {
-            get { return new string(e_magic); }
+            get { return new string(InternalMagic); }
         }
 
         public bool IsValid
